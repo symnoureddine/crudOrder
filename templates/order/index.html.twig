@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order index
+{% endblock %}
+
+{% block body %}
+	<h1>Liste de commandes</h1>
+
+	<table id="datatable" class="table table-striped table-bordered display mydatatable" style="width: 100%">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Marketplace</th>
+				<th>CreatedAt</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for order in orders %}
+				<tr>
+					<td>{{ order.id }}</td>
+					<td>{{ order.marketplace }}</td>
+					<td>{{ order.createdAt ? order.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>
+						<a href="{{ path('order_show', {'id': order.id}) }}" class="btn btn-primary">Consulter</a>
+						<a href="{{ path('order_edit', {'id': order.id}) }}" class="btn btn-secondary">Éditer</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">Aucun commande</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('order_new') }}" class="btn btn-primary">Créér</a>
+{% endblock %}

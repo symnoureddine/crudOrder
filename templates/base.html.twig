@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		<div class="container mb-3 mt-3"> {% block body %}{% endblock %}
+			</div>
+			{% block javascripts %}
+				{{ encore_entry_script_tags('app') }}
+			{% endblock %}
+			<!--	<script href="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+											<script href="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>-->
+
+		</body>
+	</html>
